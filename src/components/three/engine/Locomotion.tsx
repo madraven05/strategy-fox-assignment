@@ -27,8 +27,8 @@ const Locomotion: React.FC = () => {
 
     direction.z -= keyboardInput["w"] ? 1 : 0;
     direction.z += keyboardInput["s"] ? 1 : 0;
-    direction.x += keyboardInput["a"] ? 1 : 0;
-    direction.x -= keyboardInput["d"] ? 1 : 0;
+    direction.x -= keyboardInput["a"] ? 1 : 0;
+    direction.x += keyboardInput["d"] ? 1 : 0;
 
     direction.normalize();
 
@@ -38,16 +38,12 @@ const Locomotion: React.FC = () => {
       const rotationMatrix = new THREE.Matrix4();
       rotationMatrix.extractRotation(camera.matrix);
 
-      const forwardMotion = new THREE.Vector3(0, 0, 1).applyMatrix4(
-        rotationMatrix
-      );
-      const rightwardMotion = new THREE.Vector3(1, 0, 0).applyMatrix4(
-        rotationMatrix
-      );
+      const forwardMotion = new THREE.Vector3(0, 0, 1);
+      const rightwardMotion = new THREE.Vector3(1, 0, 0);
 
-      camera.position.add(forwardMotion.multiplyScalar(direction.z * moveDist));
+      camera.position.add(forwardMotion.multiplyScalar(direction.z * moveDist).applyQuaternion(yaw));
       camera.position.add(
-        rightwardMotion.multiplyScalar(direction.x * moveDist)
+        rightwardMotion.multiplyScalar(direction.x * moveDist).applyQuaternion(yaw)
       );
     }
   };
@@ -70,6 +66,8 @@ const Locomotion: React.FC = () => {
     ];
     updateCameraOrientation([mouseX, mouseY]);
     camera.quaternion.copy(gaze);
+
+    handleCameraLocomotion(delta);
   });
 
   return null;
