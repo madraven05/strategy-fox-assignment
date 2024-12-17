@@ -50,108 +50,118 @@ type GLTFResult = GLTF & {
 export function PinkRoom(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/PinkRoom.glb") as GLTFResult;
   return (
-    <Physics>
-      <RigidBody type="fixed" colliders="cuboid">
-        <group {...props} dispose={null}>
-          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-            <mesh
-              geometry={nodes.box_l.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.display_1.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.display_2.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.display_3.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.display_4.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.light_fram.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.light1.geometry}
-              material={materials["Material.006"]}
-            />
-            <mesh
-              geometry={nodes.ma_room_back.geometry}
-              material={materials["Material.007"]}
-              scale={[2.821, 1, 1]}
-            />
-            <mesh
-              geometry={nodes.ma_room001.geometry}
-              material={materials["room color"]}
-              scale={[2.821, 1, 1]}
-            />
-            <mesh
-              geometry={nodes.mirrore.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.monitor.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.pink_wood.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.polySurface48.geometry}
-              material={materials["room color"]}
-              position={[-11.957, -11.947, -3.126]}
-            />
-            <mesh
-              geometry={nodes.polySurface77.geometry}
-              material={materials["Material.004"]}
-              position={[0, 0, 0.003]}
-            />
-            <mesh
-              geometry={nodes.polySurface78.geometry}
-              material={materials["Material.005"]}
-            />
-            <mesh
-              geometry={nodes.polySurface9.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.wight_wood.geometry}
-              material={materials["room color"]}
-            />
-            <mesh
-              geometry={nodes.Mesh016.geometry}
-              material={materials["Material.001"]}
-            />
-            <mesh
-              geometry={nodes.Mesh016_1.geometry}
-              material={materials.standardSurface1}
-            />
-            <mesh
-              geometry={nodes.Mesh018.geometry}
-              material={nodes.Mesh018.material}
-            />
-            <mesh
-              geometry={nodes.Mesh018_1.geometry}
-              material={materials.standardSurface1}
-            />
-          </group>
+    <group {...props} dispose={null}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={1}>
+        <mesh
+          geometry={nodes.box_l.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.display_1.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.display_2.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.display_3.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.display_4.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.light_fram.geometry}
+          material={materials["room color"]}
+        />
+        <mesh
+          geometry={nodes.light1.geometry}
+          material={materials["Material.006"]}
+        />
+        {/* walls */}
+        <RigidBody type="fixed" colliders="trimesh">
           <mesh
-            geometry={nodes.wall_light.geometry}
-            material={materials["standardSurface1.001"]}
-            rotation={[Math.PI / 2, 0, 0]}
-            scale={0.01}
+            geometry={nodes.ma_room_back.geometry}
+            material={materials["Material.007"]}
+            scale={[2.821, 1, 1]}
           />
-        </group>
-      </RigidBody>
-    </Physics>
+        </RigidBody>
+        {/* floor */}
+        <RigidBody type="fixed" colliders="cuboid">
+          <mesh
+            geometry={nodes.ma_room001.geometry}
+            material={materials["room color"]}
+            scale={[2.821, 1, 1]}
+          />
+        </RigidBody>
+        <RigidBody type="fixed" colliders="cuboid">
+          <mesh
+            geometry={nodes.mirrore.geometry}
+            material={materials["room color"]}
+          />
+        </RigidBody>
+        <RigidBody colliders="cuboid">
+          <mesh
+            geometry={nodes.monitor.geometry}
+            material={materials["room color"]}
+          />
+        </RigidBody>
+        <RigidBody type="fixed" colliders="trimesh">
+          <mesh
+            geometry={nodes.pink_wood.geometry}
+            material={materials["room color"]}
+          />
+        </RigidBody>
+        <mesh
+          geometry={nodes.polySurface48.geometry}
+          material={materials["room color"]}
+          position={[-11.957, -11.947, -3.126]}
+        />
+        <mesh
+          geometry={nodes.polySurface77.geometry}
+          material={materials["Material.004"]}
+          position={[0, 0, 0.003]}
+        />
+        <mesh
+          geometry={nodes.polySurface78.geometry}
+          material={materials["Material.005"]}
+        />
+        <mesh
+          geometry={nodes.polySurface9.geometry}
+          material={materials["room color"]}
+        />
+        <RigidBody type="fixed" colliders="trimesh">
+          <mesh
+            geometry={nodes.wight_wood.geometry}
+            material={materials["room color"]}
+          />
+        </RigidBody>
+        <mesh
+          geometry={nodes.Mesh016.geometry}
+          material={materials["Material.001"]}
+        />
+        <mesh
+          geometry={nodes.Mesh016_1.geometry}
+          material={materials.standardSurface1}
+        />
+        <mesh
+          geometry={nodes.Mesh018.geometry}
+          material={nodes.Mesh018.material}
+        />
+        <mesh
+          geometry={nodes.Mesh018_1.geometry}
+          material={materials.standardSurface1}
+        />
+      </group>
+      <mesh
+        geometry={nodes.wall_light.geometry}
+        material={materials["standardSurface1.001"]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={0.01}
+      />
+    </group>
   );
 }
 

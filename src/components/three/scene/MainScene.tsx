@@ -4,7 +4,7 @@ import GoldenBayEnvironment from "./environment/GoldenBayEnvironment";
 import { PinkRoom } from "../objects/PinkRoom";
 import SceneLoader from "../SceneLoader";
 import Locomotion from "../engine/Locomotion";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { Physics } from "@react-three/rapier";
 
 const MainScene: React.FC = () => {
   return (
@@ -16,9 +16,12 @@ const MainScene: React.FC = () => {
         {/* <OrbitControls /> */}
         <Suspense fallback={<SceneLoader />}>
           <GoldenBayEnvironment />
-          <group rotation={[0, Math.PI / 10, 0]} position={[800, -400, -250]}>
-            <PinkRoom scale={3000} />
-          </group>
+          <Physics debug gravity={[0, -98, 0]}>
+            <group rotation={[0, Math.PI / 10, 0]} position={[800, -400, -250]}>
+              <PinkRoom scale={30} />
+              
+            </group>
+          </Physics>
         </Suspense>
       </Canvas>
     </div>
