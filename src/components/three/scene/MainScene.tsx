@@ -1,15 +1,9 @@
-import {
-  Environment,
-  OrbitControls,
-  OrthographicCamera,
-  PerspectiveCamera,
-} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import GoldenBayEnvironment from "./environment/GoldenBayEnvironment";
 import { PinkRoom } from "../objects/PinkRoom";
-import Ground from "../objects/Ground";
 import SceneLoader from "../SceneLoader";
+import MouseLook from "../engine/MouseLook";
 
 const MainScene: React.FC = () => {
   return (
@@ -17,7 +11,8 @@ const MainScene: React.FC = () => {
       <Canvas>
         <ambientLight />
         <directionalLight position={[10, 10, 10]} />
-        <OrbitControls />
+        <MouseLook/>
+        {/* <OrbitControls /> */}
         <Suspense fallback={<SceneLoader/>}>
           <GoldenBayEnvironment />
           <group rotation={[0, Math.PI / 10, 0]} position={[800, -300, -250]}>
