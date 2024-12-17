@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import GoldenBayEnvironment from "./environment/GoldenBayEnvironment";
 import { PinkRoom } from "../objects/PinkRoom";
 import SceneLoader from "../SceneLoader";
-import MouseLook from "../engine/MouseLook";
+import Locomotion from "../engine/Locomotion";
 
 const MainScene: React.FC = () => {
   return (
@@ -11,9 +11,9 @@ const MainScene: React.FC = () => {
       <Canvas>
         <ambientLight />
         <directionalLight position={[10, 10, 10]} />
-        <MouseLook/>
+        <Locomotion />
         {/* <OrbitControls /> */}
-        <Suspense fallback={<SceneLoader/>}>
+        <Suspense fallback={<SceneLoader />}>
           <GoldenBayEnvironment />
           <group rotation={[0, Math.PI / 10, 0]} position={[800, -300, -250]}>
             <PinkRoom scale={3000} />
