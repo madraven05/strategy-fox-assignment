@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import MainScene from './components/three/scene/MainScene'
 
 function App() {
 
   return (
-    <>
-    <h1 className='text-5xl'>Hello World</h1>
-    </>
+    <div className='h-screen w-full'>
+    <MainScene/>
+    </div>
   )
 }
 
