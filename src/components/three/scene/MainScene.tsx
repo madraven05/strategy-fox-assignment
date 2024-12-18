@@ -6,6 +6,7 @@ import SceneLoader from "../SceneLoader";
 import Locomotion from "../engine/Locomotion";
 import { Physics } from "@react-three/rapier";
 import ProductRaycaster from "../engine/ProductRaycaster";
+import MainMenu from "../../MainMenu";
 
 const MainScene: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const MainScene: React.FC = () => {
       <Canvas camera={{ position: [0, -200, 0] }}>
         <ambientLight />
         <directionalLight position={[10, 10, 10]} />
+        <MainMenu/>
         <Locomotion />
         <ProductRaycaster/>
         <Suspense fallback={<SceneLoader />}>

@@ -13,16 +13,10 @@ export const useMouseInput = () => {
       }
     };
 
-    const captureMouseMovement = () => {
-      gl.domElement.requestPointerLock();
-    };
-
     document.addEventListener("mousemove", handleMouseMovement);
-    document.addEventListener("click", captureMouseMovement);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMovement);
-      document.removeEventListener("click", captureMouseMovement);
     };
   }, []);
 
