@@ -36,7 +36,7 @@ export function GucciPurse(props: JSX.IntrinsicElements["group"]) {
             <mesh
               geometry={nodes.defaultMaterial.geometry}
               material={materials.lambert1}
-              rotation={[0, Math.PI / 2, 0]}
+              rotation={[0, 0, 0]}
             />
           </RigidBody>
         </group>

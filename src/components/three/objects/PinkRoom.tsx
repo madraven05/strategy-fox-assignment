@@ -53,7 +53,7 @@ export function PinkRoom(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/PinkRoom.glb") as GLTFResult;
   return (
     <group {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={1}>
+      <group rotation={[Math.PI / 2, 0, Math.PI/2]} scale={1}>
         <mesh
           geometry={nodes.box_l.geometry}
           material={materials["room color"]}
@@ -165,8 +165,8 @@ export function PinkRoom(props: JSX.IntrinsicElements["group"]) {
         scale={0.01}
       />
       <group>
-        <GucciPurse position={[12, 3, 0]} />
-        <Boots position={[12.5, 17, 3]} />
+        <GucciPurse position={[0, 3, -11.7]} />
+        <Boots position={[0, 17, 8.4]} />
       </group>
     </group>
   );

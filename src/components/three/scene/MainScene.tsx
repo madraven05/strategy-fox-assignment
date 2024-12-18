@@ -18,7 +18,7 @@ const MainScene: React.FC = () => {
         <Suspense fallback={<SceneLoader />}>
           <GoldenBayEnvironment />
           <Physics gravity={[0, -98, 0]}>
-            <group rotation={[0, Math.PI / 10, 0]} position={[800, -400, -250]}>
+            <group rotation={[0, Math.PI / 10, 0]} position={[750, -400, -250]}>
               <PinkRoom scale={30} />
             </group>
           </Physics>
