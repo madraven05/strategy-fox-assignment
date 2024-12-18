@@ -5,7 +5,7 @@ import { PinkRoom } from "../objects/PinkRoom";
 import SceneLoader from "../SceneLoader";
 import Locomotion from "../engine/Locomotion";
 import { Physics } from "@react-three/rapier";
-import { Html } from "@react-three/drei";
+import ProductRaycaster from "../engine/ProductRaycaster";
 
 const MainScene: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const MainScene: React.FC = () => {
         <ambientLight />
         <directionalLight position={[10, 10, 10]} />
         <Locomotion />
-        {/* <OrbitControls /> */}
+        <ProductRaycaster/>
         <Suspense fallback={<SceneLoader />}>
           <GoldenBayEnvironment />
           <Physics gravity={[0, -98, 0]}>

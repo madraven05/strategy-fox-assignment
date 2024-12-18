@@ -8,10 +8,12 @@ Title: Shoes
 */
 
 import * as THREE from "three";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { RigidBody } from "@react-three/rapier";
+import { Layers } from "../engine/Layers";
+import ProductLayer from "./ProductLayer";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -27,29 +29,32 @@ type GLTFResult = GLTF & {
 
 export function Boots(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/shoes.glb") as GLTFResult;
+
   return (
-    <group {...props} dispose={null}>
-      <group
-        position={[0, -14.952, 3.861]}
-        rotation={[-Math.PI, Math.PI/2, 0]}
-        scale={0.05}
-      >
-        <RigidBody type="dynamic" colliders="cuboid">
-          <mesh
-            geometry={nodes.Object_2.geometry}
-            material={materials.e_1675_RC_02_Material_u1_v1}
-          />
-          <mesh
-            geometry={nodes.Object_3.geometry}
-            material={materials.e_1675_RC_02_Material_u1_v1}
-          />
-          <mesh
-            geometry={nodes.Object_4.geometry}
-            material={materials.e_1675_RC_02_Material_u1_v1}
-          />
-        </RigidBody>
+    <ProductLayer name="Boots">
+      <group {...props} dispose={null}>
+        <group
+          position={[0, -14.952, 3.861]}
+          rotation={[-Math.PI, Math.PI / 2, 0]}
+          scale={0.05}
+        >
+          <RigidBody type="dynamic" colliders="cuboid">
+            <mesh
+              geometry={nodes.Object_2.geometry}
+              material={materials.e_1675_RC_02_Material_u1_v1}
+            />
+            <mesh
+              geometry={nodes.Object_3.geometry}
+              material={materials.e_1675_RC_02_Material_u1_v1}
+            />
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.e_1675_RC_02_Material_u1_v1}
+            />
+          </RigidBody>
+        </group>
       </group>
-    </group>
+    </ProductLayer>
   );
 }
 
