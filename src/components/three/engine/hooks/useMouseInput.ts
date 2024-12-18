@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 
 export const useMouseInput = () => {
   const mouse = useMemo<{ x: number; y: number }>(() => ({ x: 0, y: 0 }), []);
-  const {gl} = useThree();
+  const { gl } = useThree();
   useEffect(() => {
     const handleMouseMovement = (e: MouseEvent) => {
       const { movementX, movementY } = e;
@@ -18,7 +18,7 @@ export const useMouseInput = () => {
     return () => {
       document.removeEventListener("mousemove", handleMouseMovement);
     };
-  }, []);
+  }, [gl]);
 
   return mouse;
 };

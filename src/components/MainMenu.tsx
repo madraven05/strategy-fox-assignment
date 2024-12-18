@@ -1,17 +1,31 @@
 import { Html, useProgress } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const MainMenu:React.FC = () => {
+const MainMenu: React.FC = () => {
   const { gl } = useThree();
   const { progress } = useProgress();
 
   const [showMenu, setShowMenu] = useState(true);
 
+  useEffect(() => {
+    const capturePointerLock = () => {
+      if (gl.domElement !== document.pointerLockElement && !showMenu) {
+        gl.domElement.requestPointerLock();
+      }
+    };
+
+    gl.domElement.addEventListener("click", capturePointerLock);
+
+    return () => {
+      document.removeEventListener("click", capturePointerLock);
+    };
+  }, [gl,showMenu]);
+
   const handleEnterStore = () => {
-    gl.domElement.requestPointerLock();
     setShowMenu(false);
-  }
+    gl.domElement.requestPointerLock();
+  };
 
   return (
     <Html center>
