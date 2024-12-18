@@ -5,6 +5,7 @@ import { PinkRoom } from "../objects/PinkRoom";
 import SceneLoader from "../SceneLoader";
 import Locomotion from "../engine/Locomotion";
 import { Physics } from "@react-three/rapier";
+import { Html } from "@react-three/drei";
 
 const MainScene: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const MainScene: React.FC = () => {
             </group>
           </Physics>
         </Suspense>
+        
       </Canvas>
     </div>
   );
