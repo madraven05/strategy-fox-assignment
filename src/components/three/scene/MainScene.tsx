@@ -16,10 +16,9 @@ const MainScene: React.FC = () => {
         {/* <OrbitControls /> */}
         <Suspense fallback={<SceneLoader />}>
           <GoldenBayEnvironment />
-          <Physics debug gravity={[0, -98, 0]}>
+          <Physics gravity={[0, -98, 0]}>
             <group rotation={[0, Math.PI / 10, 0]} position={[800, -400, -250]}>
               <PinkRoom scale={30} />
-              
             </group>
           </Physics>
         </Suspense>

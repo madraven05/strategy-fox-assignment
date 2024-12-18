@@ -8,6 +8,8 @@ import React, { useEffect } from "react";
 import { useEnvironment, useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { Physics, RigidBody } from "@react-three/rapier";
+import { GucciPurse } from "./GucciPurse";
+import { Boots } from "./Boots";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -132,6 +134,7 @@ export function PinkRoom(props: JSX.IntrinsicElements["group"]) {
           geometry={nodes.polySurface9.geometry}
           material={materials["room color"]}
         />
+
         <RigidBody type="fixed" colliders="trimesh">
           <mesh
             geometry={nodes.wight_wood.geometry}
@@ -161,6 +164,10 @@ export function PinkRoom(props: JSX.IntrinsicElements["group"]) {
         rotation={[Math.PI / 2, 0, 0]}
         scale={0.01}
       />
+      <group>
+        <GucciPurse position={[12, 3, 0]} />
+        <Boots position={[12.5, 17, 3]} />
+      </group>
     </group>
   );
 }
