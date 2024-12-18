@@ -14,7 +14,6 @@ export const useMouseInput = () => {
     };
 
     document.addEventListener("mousemove", handleMouseMovement);
-
     return () => {
       document.removeEventListener("mousemove", handleMouseMovement);
     };
