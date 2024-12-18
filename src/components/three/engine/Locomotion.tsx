@@ -1,14 +1,12 @@
-import { KeyboardControlsEntry, useKeyboardControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import React, { useEffect, useMemo, useRef } from "react";
+import React from "react";
 import * as THREE from "three";
-import { Controls } from "../../../App";
 import { useKeyboard } from "./hooks/useKeyboard";
 import { useMouseInput } from "./hooks/useMouseInput";
 import { clamp, lerp } from "three/src/math/MathUtils.js";
 
 const Locomotion: React.FC = () => {
-  const { camera, gl } = useThree();
+  const { camera } = useThree();
 
   const keyboardInput = useKeyboard();
   const mouseInput = useMouseInput();
@@ -59,7 +57,7 @@ const Locomotion: React.FC = () => {
     gaze.multiplyQuaternions(yaw, pitch).normalize();
   };
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     const [mouseX, mouseY] = [
       mouseInput.x / window.innerWidth,
       mouseInput.y / window.innerHeight,

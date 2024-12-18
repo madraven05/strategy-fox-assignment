@@ -4,10 +4,9 @@ Command: npx gltfjsx@6.5.3 PinkRoom.glb -t -o PinkRoom.tsx
 */
 
 import * as THREE from "three";
-import React, { useEffect } from "react";
-import { useEnvironment, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { RigidBody } from "@react-three/rapier";
 import { GucciPurse } from "./GucciPurse";
 import { Boots } from "./Boots";
 

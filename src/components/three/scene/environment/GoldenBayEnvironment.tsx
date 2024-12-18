@@ -2,7 +2,6 @@ import { Environment } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import React, { useEffect } from "react";
 import { RGBELoader } from "three/examples/jsm/Addons.js";
-import MainScene from "../MainScene";
 import * as THREE from "three";
 
 const GoldenBayEnvironment: React.FC = () => {

@@ -11,8 +11,6 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { RigidBody } from "@react-three/rapier";
-import { useEffect, useRef } from "react";
-import { Layers } from "../engine/Layers";
 import ProductLayer from "./ProductLayer";
 
 type GLTFResult = GLTF & {

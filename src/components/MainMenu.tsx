@@ -2,7 +2,7 @@ import { Html, useProgress } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import React, { useState } from "react";
 
-const MainMenu = () => {
+const MainMenu:React.FC = () => {
   const { gl } = useThree();
   const { progress } = useProgress();
 

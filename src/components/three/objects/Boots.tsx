@@ -8,11 +8,9 @@ Title: Shoes
 */
 
 import * as THREE from "three";
-import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { RigidBody } from "@react-three/rapier";
-import { Layers } from "../engine/Layers";
 import ProductLayer from "./ProductLayer";
 
 type GLTFResult = GLTF & {
