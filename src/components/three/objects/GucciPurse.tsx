@@ -11,6 +11,9 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { RigidBody } from "@react-three/rapier";
+import { useEffect, useRef } from "react";
+import { Layers } from "../engine/Layers";
+import ProductLayer from "./ProductLayer";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -24,18 +27,21 @@ type GLTFResult = GLTF & {
 
 export function GucciPurse(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/gucci_purse.glb") as GLTFResult;
+
   return (
-    <group {...props} dispose={null}>
-      <group scale={0.06} rotation={[0, 0, 0]}>
-        <RigidBody type="dynamic" colliders="cuboid">
-          <mesh
-            geometry={nodes.defaultMaterial.geometry}
-            material={materials.lambert1}
-            rotation={[0, Math.PI / 2, 0]}
-          />
-        </RigidBody>
+    <ProductLayer name="Gucci Purse">
+      <group {...props} dispose={null}>
+        <group scale={0.06} rotation={[0, 0, 0]}>
+          <RigidBody type="dynamic" colliders="cuboid">
+            <mesh
+              geometry={nodes.defaultMaterial.geometry}
+              material={materials.lambert1}
+              rotation={[0, Math.PI / 2, 0]}
+            />
+          </RigidBody>
+        </group>
       </group>
-    </group>
+    </ProductLayer>
   );
 }
 
